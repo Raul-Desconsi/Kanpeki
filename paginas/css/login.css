@@ -1,0 +1,215 @@
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter;
+}
+
+body{
+background:#F3D0E6;
+}
+
+/* LOGIN */
+
+.login{
+display:flex;
+height:100vh;
+}
+
+.login-left{
+width:40%;
+background:white;
+padding:60px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.login-left h2{
+color:#F851B5;
+}
+
+.login-right{
+width:60%;
+background:linear-gradient(135deg,#F851B5,#F077C5);
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+font-weight:600;
+}
+
+/* INPUT */
+
+input{
+width:100%;
+padding:12px;
+margin-top:10px;
+margin-bottom:20px;
+border-radius:8px;
+border:1px solid #ddd;
+}
+
+input:focus{
+border-color:#F077C5;
+outline:none;
+box-shadow:0 0 0 2px rgba(240,119,197,0.2);
+}
+
+/* BOTÕES */
+
+button{
+padding:12px;
+border-radius:8px;
+border:none;
+cursor:pointer;
+font-weight:500;
+}
+
+.btn-primary{
+background:#F851B5;
+color:white;
+width:100%;
+}
+
+.btn-primary:hover{
+background:#F077C5;
+}
+
+.btn-outline{
+border:1px solid #ccc;
+background:white;
+width:100%;
+margin-top:10px;
+}
+
+/* APP */
+
+.app{
+display:flex;
+height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:240px;
+background:#F851B5;
+color:white;
+padding:20px;
+}
+
+.sidebar h2{
+margin-bottom:30px;
+}
+
+.sidebar ul{
+list-style:none;
+}
+
+.sidebar li{
+padding:12px;
+display:flex;
+align-items:center;
+gap:10px;
+cursor:pointer;
+border-radius:8px;
+}
+
+.sidebar li:hover{
+background:rgba(255,255,255,0.2);
+}
+
+/* CONTENT */
+
+.content{
+flex:1;
+padding:30px;
+}
+
+/* TOPBAR */
+
+.topbar{
+display:flex;
+justify-content:space-between;
+margin-bottom:20px;
+}
+
+/* LOJA */
+
+.produtos{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:20px;
+}
+
+.produto{
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 2px 6px rgba(0,0,0,0.05);
+text-align:center;
+}
+
+.produto img{
+width:100%;
+height:140px;
+object-fit:cover;
+border-radius:8px;
+}
+
+.produto h3{
+margin:10px 0;
+font-size:16px;
+}
+
+.produto p{
+color:#F851B5;
+font-weight:600;
+}
+
+.produto button{
+margin-top:10px;
+width:100%;
+background:#F851B5;
+color:white;
+}
+
+.produto button:hover{
+background:#F077C5;
+}
+
+/* LOGO LOGIN */
+.logo{
+width:140px;
+margin-bottom:20px;
+}
+
+/* LOGO SIDEBAR */
+.logo-sidebar{
+width:120px;
+margin-bottom:30px;
+}
+
+
+/* LOGIN LADO DIREITO */
+.login-right{
+width:60%;
+background:#e82a67;
+color:white;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+font-size:28px;
+font-weight:600;
+text-align:center;
+}
+
+/* LOGO NO LADO DIREITO */
+.logo-right{
+width:800px;
+margin-bottom:20px;
+}
