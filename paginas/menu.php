@@ -12,17 +12,19 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
     <link rel="stylesheet" href="css/componentes.css">
-    <link rel="stylesheet" href="css/index.css">
-
-
+    <link rel="stylesheet" href="css/cores.css">
+    <link rel="stylesheet" href="css/menu.css">
 
 
 </head>
 
-<body >
+<?php
+echo <<<HTML
+<body>
 
-    <nav class="navbar navbar-expand-lg pink-soft-backgorund navbar-custom shadow-sm m-2  rounded-4 px-3">
+    <nav class="navbar navbar-expand-lg navbar-light pink-soft-background navbar-custom shadow-sm m-2 rounded-4 px-3">
         <div class="container-fluid">
 
             <a class="navbar-brand d-flex align-items-center fw-bold" href="#">
@@ -61,38 +63,31 @@
 
                 </ul>
 
-                <div class="dropdown">
-                    <button class="btn btn-light d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm"
-                        type="button" data-bs-toggle="dropdown">
+                    <div class="row"> 
+                        <div class="col-4 ml-2">
+                            <button class="btn btn-light d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm"
+                                type="button" data-bs-toggle="dropdown">
 
-                        <i class="fas fa-user"></i>
-                        <span id="idUsuario">João</span>
-                    </button>
+                                <i class="fas fa-user"></i>
+                                <span id="idUsuario">João</span>
+                            </button>
+                        </div>
+                        <div class="col-4 mr-2">
+                            <button class="btn btn-light d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm"
+                                type="button" data-bs-toggle="dropdown">
 
-                    <ul class="dropdown-menu dropdown-menu-end shadow">
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
-                                <i class="fas fa-user"></i> Perfil
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
-                                <i class="fas fa-cog"></i> Configurações
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <a class="dropdown-item text-danger d-flex align-items-center gap-2" href="#">
-                                <i class="fas fa-sign-out-alt"></i> Sair
-                            </a>
-                        </li>
-                    </ul>
+                                <i class="fas fa-user"></i>
+                                <span id="idUsuario">João</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </div>
     </nav>
+
 </body>
+HTML;
+?>
+
 </html>
