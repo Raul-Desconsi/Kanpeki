@@ -40,7 +40,6 @@ if (isset($conexao)) {
         
             http_response_code(200);
             echo json_encode([
-                "mensagem" => "Login realizado com sucesso",
                 "usuario" => $resposta 
             ]);
         } else {

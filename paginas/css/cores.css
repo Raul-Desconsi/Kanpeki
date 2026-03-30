@@ -14,11 +14,36 @@ color: #000000 !important ;
 background-color: #000000 !important ; 
 }
 
+.red-background{
+background-color: #ff0000 !important ; 
+}
 
 .pink-soft{
 color: #f3d0e6 !important ;
 }
 
+.border-bottom-pink {
+    border-bottom: 2px solid #f3d0e6;
+}
+
+
 .pink-soft-backgorund{
 background-color: #f3d0e6 !important ; 
+}
+
+.pink-normal{
+color: #F077C5 !important ;
+}
+
+.pink-normal-backgorund{
+background-color: #F077C5 !important ; 
+}
+
+
+.border-pink-normal {
+    border: 1px solid #F077C5;
+}
+
+.border-pink-soft {
+    border: 1px solid #f3d0e6;
 }

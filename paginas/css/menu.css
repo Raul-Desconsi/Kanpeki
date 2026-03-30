@@ -1,24 +1,34 @@
 
- .navbar-custom {
-            background: linear-gradient(135deg, #ffe4ec, #f8d7da);
-        }
+/* Logo */
+.logo-box {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .nav-link {
-            transition: 0.2s;
-            border-radius: 8px;
-        }
+.nav-custom-link {
+    font-weight: 600;
+    transition: 0.2s;
+    border-radius: 8px;
+    margin: 0 4px;
+}
 
-        .nav-link:hover {
-            background-color: rgba(0,0,0,0.05);
-        }
+.nav-custom-link:hover {
+    background-color: #f3d0e6; 
+}
 
-        .user-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+.points-container {
+    box-shadow: 0 2px 5px rgba(240, 119, 197, 0.1);
+}
 
-        .dropdown-menu {
-            border-radius: 12px;
-        }
+/* Avatar */
+.avatar-small {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+}
+
+
