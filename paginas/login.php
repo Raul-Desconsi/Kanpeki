@@ -1,3 +1,9 @@
+<?php
+session_start();
+$_SESSION = array();
+session_destroy();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -27,9 +33,9 @@
         </div>
 
         <div class="login-right">
-            <img src="../ativos/imagens/logo.png" alt="Logo Kanpeki" class="logo-right">
-            <p>Troque suas ideias por recompensas 🎁</p>
-        </div>
+    <div class="login-right">
+    </div>
+</div>
 
     </main>
 
