@@ -5,10 +5,11 @@ require_once("../api/phpFunction/verificaLogin.php");
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="../ativos/imagens/Kanpeki-logo-nbg.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../ativos/imagens/Kanpeki-logo-nbg.png" type="image/x-icon">
 
     <title>Kanpeki</title>
 
@@ -20,16 +21,48 @@ require_once("../api/phpFunction/verificaLogin.php");
     <link rel="stylesheet" href="css/cores.css">
     <link rel="stylesheet" href="css/menu.css">
 </head>
+
 <body>
-    <?php 
+    <?php
     include("menu.php");
     ?>
 
-    <div class="container mt-4">
-        
+    <div class="container mt-4 pt-2">
+        <div class="card border-pink-soft rounded-2 shadow">
+            <div class="card-title d-flex align-items-center  justify-content-center ">
 
-    <script src="../ativos/plugins/bootstrap/bootstrap.bundle.min.js"></script>
+                <h3><b><i class="fa-solid fa-clipboard"></i> Criar formulário de melhoria</b></h3>
+            </div>
+            <div class="card-body">
 
-    </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-id-badge"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                   <div class="col">
+                        <h4>Nome do funcionário</h4>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-id-badge"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                        </div>
+
+
+                </div>
+            </div>
+
+
+            <script src="../ativos/plugins/bootstrap/bootstrap.bundle.min.js"></script>
+
+        </div>
 </body>
+
 </html>

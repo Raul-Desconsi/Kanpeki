@@ -1,6 +1,4 @@
-<?php 
-session_start();
-?>
+
 
 <nav class="navbar navbar-expand-lg white-background shadow-sm border-bottom-pink sticky-top">
   <div class="container-fluid px-4">
