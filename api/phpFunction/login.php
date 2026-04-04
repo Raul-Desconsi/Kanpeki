@@ -24,7 +24,9 @@ if (!$cracha || !$senha) {
 
 if (isset($conexao)) {
     try {
-        $sql = "SELECT * FROM usuario WHERE cracha = :cracha AND senha = :senha";
+        $sql = "SELECT US.*, ST.NOME AS nome_setor FROM usuario US
+        LEFT JOIN setor ST ON ST.ID = US.SETOR_ID
+        WHERE US.cracha = :cracha AND US.senha = :senha";
 
         $stmt = $conexao->prepare($sql);
         

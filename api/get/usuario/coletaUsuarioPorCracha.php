@@ -10,27 +10,12 @@ error_reporting(E_ALL);
 $input = json_decode(file_get_contents('php://input'), true);
 
 $cracha = $input['cracha'] ?? null;
-$senha = $input['senha'] ?? null; 
-
-
-
-if (!$cracha || !$senha) {
-    http_response_code(400);
-    echo json_encode([
-        "mensagem" => "Crachá e senha são obrigatórios"
-    ]);
-    exit;
-}
 
 if (isset($conexao)) {
     try {
-        $sql = "SELECT * FROM usuario WHERE cracha = :cracha AND senha = :senha";
-
+        $sql = "SELECT * FROM usuario WHERE cracha = :cracha";
         $stmt = $conexao->prepare($sql);
-        
         $stmt->bindParam(':cracha', $cracha, PDO::PARAM_STR);
-        $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
-
         $stmt->execute();
 
         $resposta = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -45,7 +30,7 @@ if (isset($conexao)) {
         } else {
             http_response_code(401);
             echo json_encode([
-                "mensagem" => "Crachá ou senha inválidos"
+                "mensagem" => "Crachá  inválido"
             ]);
         }
     } catch (PDOException $e) {

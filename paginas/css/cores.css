@@ -39,6 +39,14 @@ color: #F077C5 !important ;
 background-color: #F077C5 !important ; 
 }
 
+.pink-strong{
+    color: #F851B5;
+}
+
+.pink-strong-backgorund{
+    background-color: #F851B5 ;
+}
+
 
 .border-pink-normal {
     border: 1px solid #F077C5;
