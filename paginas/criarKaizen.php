@@ -101,7 +101,7 @@ require_once("../api/phpFunction/verificaLogin.php");
                         <span class="input-group-text pink-soft-background border-0">
                             <i class="fa-solid fa-lightbulb"></i>
                         </span>
-                        <input type="text" id="tituloMelhoriaId" class="form-control"
+                        <input type="text" maxlength="90" id="tituloMelhoriaId" class="form-control"
                             placeholder="Digite o título da melhoria">
                     </div>
                 </div>
@@ -154,18 +154,14 @@ require_once("../api/phpFunction/verificaLogin.php");
                 <hr class="mb-5">
 
                 <!-- Botões -->
-                <div class="row g-4">
+                <div class="row d-flex - justify-content-center g-4">
                     <div class="col-md-6">
                         <button type="button" onclick="criarKaizen()" class="btn btn-outline-success  w-100 py-2">
                             Salvar
                         </button>
                     </div>
 
-                    <div class="col-md-6">
-                        <button type="button" class="btn btn-outline-warning  w-100 py-2">
-                            Cancelar
-                        </button>
-                    </div>
+                   
                 </div>
 
             </div>
