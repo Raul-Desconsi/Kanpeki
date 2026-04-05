@@ -1,0 +1,81 @@
+        #conteudo-pagina {
+            padding-top: 20px;
+        }
+
+        #conteudo-pagina .card-busca {
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 30px !important;
+        }
+
+        #conteudo-pagina .input-group-lg .form-control {
+            font-size: 1.2rem;
+        }
+
+        #conteudo-pagina .kaizen-card {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 15px;
+            padding: 25px !important;
+            transition: all 0.3s ease;
+        }
+
+        
+        #conteudo-pagina .kaizen-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+            transform: translateY(-2px);
+        }
+
+        
+        #conteudo-pagina .status-aprovado:hover {
+            border-color: #00aa25 !important;
+        }
+
+        #conteudo-pagina .status-pendente:hover {
+            border-color: #ffb121 !important;
+        }
+
+        #conteudo-pagina .status-recusado:hover {
+            border-color: #dc3545 !important;
+        }
+
+        #conteudo-pagina .titulo-kaizen {
+            font-size: 1.4rem;
+            color: #212529;
+            margin-bottom: 15px;
+        }
+
+        #conteudo-pagina .label-destaque {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: #6c757d;
+            display: block;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        #conteudo-pagina .valor-destaque {
+            font-size: 1.1rem;
+            color: #000;
+            font-weight: 500;
+        }
+
+        #conteudo-pagina .badge-custom {
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+
+        #conteudo-pagina .btn-abrir {
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .border-meio {
+                border-right: 1px solid #eee;
+                padding-right: 20px;
+            }
+        }
