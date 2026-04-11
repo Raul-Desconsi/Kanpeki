@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 // Verificar se a função existe antes de chamar
 if(function_exists('contarItensCarrinho')) {
@@ -7,6 +8,9 @@ if(function_exists('contarItensCarrinho')) {
     $contadorCarrinho = isset($_SESSION['carrinho']) ? array_sum(array_column($_SESSION['carrinho'], 'qtd')) : 0;
 }
 ?>
+=======
+
+>>>>>>> abe08d8901d0ac4c02d6ef4751265503ee79ebae
 
 <nav class="navbar navbar-expand-lg white-background shadow-sm border-bottom-pink sticky-top">
   <div class="container-fluid px-4">
