@@ -22,6 +22,7 @@ background-color: #ff0000 !important ;
 color: #f3d0e6 !important ;
 }
 
+
 .border-bottom-pink {
     border-bottom: 2px solid #f3d0e6;
 }
@@ -37,6 +38,14 @@ color: #F077C5 !important ;
 
 .pink-normal-backgorund{
 background-color: #F077C5 !important ; 
+}
+
+.pink-strong{
+    color: #F851B5;
+}
+
+.pink-strong-backgorund{
+    background-color: #F851B5 ;
 }
 
 
