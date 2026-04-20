@@ -54,7 +54,7 @@ require_once("../api/phpFunction/verificaLogin.php");
                             <span class="input-group-text pink-soft-background border-0">
                                 <i class="fa-solid fa-id-badge"></i>
                             </span>
-                            <input type="text" id="crachaInput" disabled
+                            <input type="text" id="crachaInput" readonly
                                 value="<?php echo htmlspecialchars($_SESSION['usuario']['cracha']); ?>"
                                 class="form-control" placeholder="Digite o crachá">
                         </div>
@@ -66,7 +66,7 @@ require_once("../api/phpFunction/verificaLogin.php");
                             <span class="input-group-text pink-soft-background border-0">
                                 <i class="fa-solid fa-user"></i>
                             </span>
-                            <input type="text" id="nomeInput" disabled readonly
+                            <input type="text" id="nomeInput" readonly
                                 value="<?php echo htmlspecialchars($_SESSION['usuario']['nome']); ?>"
                                 class="form-control" placeholder="Nome completo">
                         </div>
@@ -78,7 +78,7 @@ require_once("../api/phpFunction/verificaLogin.php");
                             <span class="input-group-text pink-soft-background border-0">
                                 <i class="fa-solid fa-briefcase"></i>
                             </span>
-                            <input type="text"  disabled readonly
+                            <input type="text"  readonly
                                 value="<?php echo htmlspecialchars($_SESSION['usuario']['nome_setor']); ?>"
                                 class="form-control" placeholder="Setor">
                         </div>

@@ -81,6 +81,8 @@ async function inserirDadosNoFormulario() {
 
 
 
+
+//?-------------------------------------------------------------------------------//
 async function adicionarFormularioDeAvaliacao() {
 
 
@@ -89,45 +91,43 @@ async function adicionarFormularioDeAvaliacao() {
     const resposta = await coletaKaizenPorId();
     const kaizen = resposta.kaizen;
 
-
     avaliacaoGrid.innerHTML = "";
 
-    if (kaizen.status == "APROVADO" || kaizen.status == "REPROVADO" || nivelUsuario == "1") {
+    if (kaizen.status == "APROVADO" || kaizen.status == "REPROVADO" || parseInt(nivelUsuario) == "1") {
+        const resposta = await buscarAvalaiacao(kaizen.id)
+        const avaliacao = resposta.avaliacao
+
+        var cor = "";
+        if (avaliacao.status_aprovacao == "APROVADO") {
+            cor = "bg-success";
+        }
+
+          if (avaliacao.status_aprovacao == "REPROVADO") {
+            cor = "bg-danger";
+        }
+
+
 
         avaliacaoGrid.innerHTML = ` <div class="container my-5">
 
+        
             <div class="card border-pink-soft rounded-3 shadow p-4">
 
+
+                <div class="card-header justify-content-center d-flex align-items-center text-center rounded ${cor} mb-2 text-white" > 
+                <h5><b>${avaliacao.status_aprovacao}</b></h5>
+                </div>
                 <div class="card-header text-center bg-white border-0">
                     <h4 class="fw-bold mb-0">
                         <i class="fa-solid fa-star me-2"></i>
                         Avaliar formulário
                     </h4>
                 </div>
-
                 <div class="card-body">
                     <div class="row mb-5 justify-content-center">
-
-                        <div class="col-md-3 text-center">
-                            <label class="form-label fw-semibold mb-2">Valor Base</label>
-                            <input id="baseValor" disabled type="number" class="form-control" placeholder="0">
-                        </div>
-
-                        <div class="col-1 d-flex justify-content-center align-items-center text-center">
-                            <i class="fa-solid mt-4 fa-plus"></i>
-                        </div>
-
-                        <div class="col-md-3 text-center">
-                            <label class="form-label fw-semibold mb-2">Valor da Avaliação</label>
-                            <input id="avaliacaoValor" type="number" class="form-control" placeholder="">
-                        </div>
-
-                        <div class="col-1 d-flex justify-content-center align-items-center text-center">
-                            <i class="fa-solid mt-4 fa-equals"></i>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <label class="form-label fw-semibold mb-2">Somatória</label>
-                            <input id="totalValor" disabled type="number" class="form-control" placeholder="">
+                        <div class="col-md-6 text-center">
+                            <label class="form-label fw-semibold mb-2">Valor Total da Avaliação</label>
+                            <input value="${avaliacao.valor_avaliado}"  readonly type="number" class="form-control" placeholder="">
                         </div>
                     </div>
 
@@ -137,7 +137,7 @@ async function adicionarFormularioDeAvaliacao() {
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                 </div>
-                                <textarea id="observacao" class="form-control" aria-label="With textarea"></textarea>
+                                <textarea  readonly class="form-control" aria-label="With textarea">${avaliacao.observacao}</textarea>
                             </div>
                         </div>
                     </div>
@@ -216,46 +216,57 @@ async function adicionarFormularioDeAvaliacao() {
         </div>`;
 
     }
-}
 
+}
+//?-------------------------------------------------------------------------------//
+
+
+
+//?-------------------------------------------------------------------------------//
 
 function fazerCalculo(valorBase, valor) {
+    if (valor < 0) {
+        window.alert("Informe um valor positivo")
+        return
+    }
     var calc = (parseFloat(valorBase) + parseFloat(valor))
     document.getElementById("totalValor").value = calc
 }
+//?-------------------------------------------------------------------------------//
 
 
+
+//?-------------------------------------------------------------------------------//
 async function cadastrarAvaliacao(status) {
-    
+
     const id = coletIdViaUrl();
     const resposta = await coletaKaizenPorId();
     const kaizen = resposta.kaizen;
 
-    const avaliacaoValor = document.getElementById("totalValor").value
+    const avaliacaoValor = document.getElementById("avaliacaoValor").value
     const observacao = document.getElementById("observacao").value
 
 
-    if (!id || !kaizen  || !avaliacaoValor || !observacao) {
+    if (!id || !kaizen || !avaliacaoValor || !observacao) {
         window.alert("Preencha a avaliação antes de prosseguir !")
         return
     }
-  
-             //! Fazer a parte da API  
+
     try {
         const response = await fetch('../api/insert/kaizen/criarAvaliacao.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 id: id,
-                crcha: kaizen.funcionario_cracha  ,
+                cracha: kaizen.funcionario_cracha,
                 avaliacao: avaliacaoValor,
                 status: status,
                 observacao: observacao,
-               
+
             })
         });
 
-            
+
         switch (response.status) {
             case 201:
                 window.alert("Cadastro concluído !!")
@@ -272,7 +283,37 @@ async function cadastrarAvaliacao(status) {
         alert("Erro de conexão com o servidor.");
     }
 }
+//?-------------------------------------------------------------------------------//
 
+
+
+//?-------------------------------------------------------------------------------//
+async function buscarAvalaiacao(idFormulario) {
+
+  try {
+    const response = await fetch('../api/get/kaizen/coletarAvaliacaoPorIdFormulario.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: idFormulario
+       
+      })
+    });
+
+    const data = await response.json();
+
+    switch (response.status) {
+      case 200:
+        return data
+    
+    }
+
+  } catch (error) {
+    console.error("Erro na requisição:", error);
+    alert("Erro de conexão com o servidor.");
+  }
+}
+//?-------------------------------------------------------------------------------//
 
 
 

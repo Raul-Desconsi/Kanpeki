@@ -49,64 +49,12 @@ require_once("../api/phpFunction/verificaLogin.php");
         <div class="mb-5">
             <h3 class="fw-bold d-flex align-items-center">
                 <i class="fa-solid fa-clipboard-check me-3 pink-normal fa-lg"></i>
-                Formulários Kaizen
+                Formulários Kaizen 
             </h3>
             <hr class="pink-normal-backgorund" style="height: 2px; opacity: 0.2;">
         </div>
 
         <div id="kaizengrid" class="d-flex flex-column gap-4">
-
-            <div class="card kaizen-card status-recusado shadow-sm">
-                <div class="row align-items-center">
-
-                    <div class="col-md-9">
-                        <div class="row mb-3">
-                            <div class="col-12">
-                                <span class="label-destaque">Título do Projeto</span>
-                                <h4 class="titulo-kaizen fw-bold">Otimização do Fluxo de Carga e Descarga - Setor Norte
-                                </h4>
-                            </div>
-                        </div>
-
-                        <div class="row g-4">
-                            <div class="col-md-3 border-meio">
-                                <span class="label-destaque">Responsável</span>
-                                <span class="valor-destaque text-muted">Carlos Eduardo Alberto</span>
-                            </div>
-
-                            <div class="col-md-3 border-meio">
-                                <span class="label-destaque">Departamento / Setor</span>
-                                <span class="valor-destaque text-muted">Logística Operacional</span>
-                            </div>
-
-                            <div class="col-md-3 border-meio text-md-center">
-                                <span class="label-destaque">Nível de Urgência</span>
-                                <span class="badge bg-warning text-dark badge-custom shadow-sm">
-                                    <i class="fa-solid fa-triangle-exclamation me-1"></i> Urgência Alta
-                                </span>
-                            </div>
-
-                            <div class="col-md-3 text-md-center">
-                                <span class="label-destaque">Status</span>
-                                <span class="badge bg-status-recusado text-danger badge-custom shadow-sm">
-                                    RECUSADO
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 text-md-end mt-4 mt-md-0">
-                        <button type="button" class="btn btn-outline-success btn-abrir w-100 shadow-sm"
-                            onclick="abrirKaizen()">
-                            Visualizar Kaizen <i class="fa-solid fa-external-link ms-2"></i>
-                        </button>
-                    </div>
-
-                </div>
-            </div>
-
-
-            
         </div>
     </div>
 
