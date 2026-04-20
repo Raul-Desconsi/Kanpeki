@@ -1,10 +1,13 @@
 <?php
-// Verificar se a função existe antes de chamar
+
+
+// 🔥 GARANTE QUE A FUNÇÃO EXISTA
 if(function_exists('contarItensCarrinho')) {
     $contadorCarrinho = contarItensCarrinho();
 } else {
-    // Fallback caso a função não esteja disponível
-    $contadorCarrinho = isset($_SESSION['carrinho']) ? array_sum(array_column($_SESSION['carrinho'], 'qtd')) : 0;
+    $contadorCarrinho = isset($_SESSION['carrinho']) 
+        ? array_sum(array_column($_SESSION['carrinho'], 'qtd')) 
+        : 0;
 }
 ?>
 
@@ -13,7 +16,7 @@ if(function_exists('contarItensCarrinho')) {
     
     <!-- Logo -->
     <a class="navbar-brand d-flex align-items-center fw-bold dark" href="loja.php">
-      <div class=" me-3">
+      <div class="me-3">
         <img src="../ativos/imagens/Kanpeki-logo-nbg.png" width="50px" alt="logo">
       </div>
       KANPEKI
@@ -24,34 +27,51 @@ if(function_exists('contarItensCarrinho')) {
       <i class="fas fa-bars dark"></i>
     </button>
 
-    <!-- Conteúdo da Navbar -->
     <div class="collapse navbar-collapse" id="navContent">
 
-      <!-- Menu esquerda -->
+      <!-- MENU ESQUERDA -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
         <li class="nav-item">
-          <a class="nav-link nav-custom-link dark" href="loja.php"><i class="fas fa-store me-1"></i> Loja</a>
+          <a class="nav-link nav-custom-link dark" href="loja.php">
+            <i class="fas fa-store me-1"></i> Loja
+          </a>
         </li>
+
+        <!-- 🔥 NOVO: HISTÓRICO -->
         <li class="nav-item">
-          <a class="nav-link nav-custom-link dark" href="criarKaizen.php"><i class="fas fa-lightbulb me-1"></i>Criar Kaizen</a>
+          <a class="nav-link nav-custom-link dark" href="historico.php">
+            <i class="fas fa-box me-1"></i> Histórico
+          </a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link nav-custom-link dark" href="historicoKaizens.php"><i class="fa-solid fa-clock-rotate-left me-1"></i>Ver meus Kaizens</a>
+          <a class="nav-link nav-custom-link dark" href="criarKaizen.php">
+            <i class="fas fa-lightbulb me-1"></i> Criar Kaizen
+          </a>
         </li>
-       
-       <?php  
-    if ($_SESSION['usuario']['permissao'] > 1) {
-        echo '<li class="nav-item">
-                <a class="nav-link nav-custom-link dark" href="avaliarKaizen.php"><i class="fa-solid fa-scale-balanced me-1"></i> Avaliar Kaizens</a>
-              </li>';
-    } 
-    ?>
+
+        <li class="nav-item">
+          <a class="nav-link nav-custom-link dark" href="historicoKaizens.php">
+            <i class="fa-solid fa-clock-rotate-left me-1"></i> Ver meus Kaizens
+          </a>
+        </li>
+
+        <?php  
+        if ($_SESSION['usuario']['permissao'] > 1) {
+            echo '<li class="nav-item">
+                    <a class="nav-link nav-custom-link dark" href="avaliarKaizen.php">
+                        <i class="fa-solid fa-scale-balanced me-1"></i> Avaliar Kaizens
+                    </a>
+                  </li>';
+        } 
+        ?>
       </ul>
 
-      <!-- Menu direita -->
+      <!-- MENU DIREITA -->
       <div class="d-flex align-items-center gap-3">
 
-        <!-- 🔍 BARRA DE PESQUISA DESKTOP -->
+        <!-- BUSCA -->
         <form class="d-none d-md-flex" id="form-pesquisa" action="/Kanpeki/paginas/loja.php" method="GET">
             <div class="input-group" style="width: 250px;">
                 <input type="text" 
@@ -59,57 +79,51 @@ if(function_exists('contarItensCarrinho')) {
                        name="search" 
                        id="search-input"
                        placeholder="🔍 Buscar produtos..." 
-                       value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>"
-                       style="border-radius: 50px 0 0 50px; font-size: 0.9rem;">
-                <button class="btn btn-outline-secondary rounded-pill" type="submit" style="border-radius: 0 50px 50px 0;">
+                       value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+                <button class="btn btn-outline-secondary rounded-pill" type="submit">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
         </form>
 
-        <!-- 🔍 Botão pesquisa mobile -->
-        <button class="btn d-md-none border p-2 rounded-pill hover-soft shadow-sm" id="btn-search-mobile" type="button">
+        <!-- BOTÃO MOBILE -->
+        <button class="btn d-md-none border p-2 rounded-pill" id="btn-search-mobile" type="button">
             <i class="fas fa-search dark"></i>
         </button>
 
-        <!-- CARRINHO COM CONTADOR -->
-        <a href="carrinho.php" class="btn d-flex align-items-center text-decoration-none border p-2 rounded-pill hover-soft shadow-sm position-relative">
+        <!-- 🛒 CARRINHO -->
+        <a href="carrinho.php" class="btn d-flex align-items-center border p-2 rounded-pill position-relative">
+          
           <div class="avatar-small pink-soft-background d-flex align-items-center justify-content-center rounded-circle me-2">
             <i class="fas fa-shopping-cart pink-normal"></i>
           </div>
+
           <span class="dark fw-semibold d-none d-sm-inline me-2">Carrinho</span>
-          
-          <!-- Badge contador -->
-          <span id="carrinho-contador" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" 
-                style="font-size: 0.7rem; <?php echo $contadorCarrinho <= 0 ? 'display: none;' : ''; ?>">
+
+          <span id="carrinho-contador" 
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                style="<?php echo $contadorCarrinho <= 0 ? 'display:none;' : ''; ?>">
             <?php echo $contadorCarrinho; ?>
-            <span class="visually-hidden">itens no carrinho</span>
           </span>
         </a>
 
-        <!-- Saldo/Pontos do usuário -->
-        <div class="points-container pink-soft-background border-pink-normal d-flex align-items-center px-3 py-2 rounded-pill">
-          <i class="fas fa-coins me-2 pink-normal"></i>
-          <div class="d-flex flex-column text-end">
-            <span class="points-title dark" style="font-size: 0.6rem; font-weight: 800; text-transform: uppercase;">Saldo</span>
-            <span class="dark fw-bold" id="pontosUsuario" style="line-height: 1;"><?php echo htmlspecialchars($_SESSION['usuario']['pontos']); ?>
-          </div>
+        <!-- 💰 SALDO -->
+        <div class="points-container d-flex align-items-center px-3 py-2 rounded-pill">
+          <i class="fas fa-coins me-2"></i>
+          <span id="pontosUsuario">
+            <?php echo htmlspecialchars($_SESSION['usuario']['pontos']); ?> pts
+          </span>
         </div>
 
-        <!-- Botão Perfil -->
-        <a href="perfil.php" class="btn d-flex align-items-center text-decoration-none border p-2 rounded-pill hover-soft shadow-sm">
-          <div class="avatar-small dark-background white d-flex align-items-center justify-content-center rounded-circle me-2">
-            <i class="fas fa-user"></i>
-          </div>
-          <span class="dark fw-semibold d-none d-sm-inline me-2"><?php echo htmlspecialchars($_SESSION['usuario']['nome']); ?></span>
+        <!-- 👤 PERFIL -->
+        <a href="perfil.php" class="btn d-flex align-items-center border p-2 rounded-pill">
+          <i class="fas fa-user me-2"></i>
+          <?php echo htmlspecialchars($_SESSION['usuario']['nome']); ?>
         </a>
 
-         <!-- Botão Logout -->
-        <a href="login.php" class="btn d-flex align-items-center text-decoration-none border p-2 rounded-pill hover-soft shadow-sm">
-          <div class="avatar-small bg-danger white d-flex align-items-center justify-content-center rounded-circle me-2">
-            <i class="fa-solid fa-arrow-right-to-bracket"></i>
-          </div>
-          <span class="danger fw-semibold d-none d-sm-inline me-2">Sair</span>
+        <!-- 🚪 LOGOUT -->
+        <a href="login.php" class="btn border p-2 rounded-pill">
+          Sair
         </a>
 
       </div>
@@ -117,142 +131,40 @@ if(function_exists('contarItensCarrinho')) {
   </div>
 </nav>
 
-<!-- 🔍 MODAL DE PESQUISA MOBILE -->
-<div class="modal fade" id="modal-search" tabindex="-1" aria-hidden="true">
+<!-- MODAL MOBILE -->
+<div class="modal fade" id="modal-search">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body p-4">
-                <form action="/Kanpeki/paginas/loja.php" method="GET">
-                    <div class="input-group">
-                        <input type="text" 
-                               class="form-control" 
-                               name="search" 
-                               placeholder="Buscar produtos..." 
-                               value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>"
-                               style="border-radius: 50px 0 0 50px;">
-                        <button class="btn btn-primary rounded-pill" type="submit" style="border-radius: 0 50px 50px 0;">
-                            <i class="fas fa-search"></i> Buscar
-                        </button>
-                    </div>
-                </form>
-            </div>
+        <div class="modal-content p-4">
+            <form action="/Kanpeki/paginas/loja.php" method="GET">
+                <input type="text" name="search" class="form-control" placeholder="Buscar...">
+            </form>
         </div>
     </div>
 </div>
 
-<style>
-    /* Animação para o contador do carrinho */
-    @keyframes pulse-carrinho {
-        0% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.2);
-        }
-        100% {
-            transform: scale(1);
-        }
-    }
-    
-    .carrinho-pulse {
-        animation: pulse-carrinho 0.5s ease-in-out;
-    }
-    
-    /* Badge do carrinho */
-    #carrinho-contador {
-        font-size: 0.65rem;
-        padding: 0.25rem 0.4rem;
-        margin-top: -5px;
-        margin-right: -5px;
-        transition: all 0.3s ease;
-    }
-    
-    /* Estilo da barra de pesquisa */
-    #search-input:focus {
-        box-shadow: none;
-        border-color: #ff6b6b;
-    }
-    
-    .form-control:focus {
-        border-color: #ff6b6b;
-        box-shadow: 0 0 0 0.2rem rgba(255,107,107,0.25);
-    }
-    
-    /* Botão pesquisa mobile */
-    #btn-search-mobile {
-        transition: all 0.3s;
-    }
-    
-    #btn-search-mobile:hover {
-        transform: scale(1.05);
-        background-color: #f8f9fa;
-    }
-</style>
-
-<!-- jQuery (necessário para AJAX) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Bootstrap JS -->
 <script src="../ativos/plugins/bootstrap/bootstrap.bundle.min.js"></script>
 
 <script>
-// Função para atualizar o contador do carrinho via AJAX
+// 🔥 AJAX CONTADOR
 function atualizarContadorCarrinho() {
-    $.ajax({
-        url: '/Kanpeki/api/insert/carrinho/contador.php',
-        method: 'GET',
-        dataType: 'json',
-        success: function(response) {
-            if(response.count !== undefined) {
-                const badge = $('#carrinho-contador');
-                const novoContador = response.count;
-                
-                if(novoContador > 0) {
-                    badge.text(novoContador).fadeIn();
-                    badge.addClass('carrinho-pulse');
-                    setTimeout(function() {
-                        badge.removeClass('carrinho-pulse');
-                    }, 500);
-                } else {
-                    badge.fadeOut();
-                }
-            }
-        },
-        error: function() {
-            console.log('Erro ao atualizar contador do carrinho');
+    $.get('/Kanpeki/api/insert/carrinho/contador.php', function(response){
+        const badge = $('#carrinho-contador');
+
+        if(response.count > 0){
+            badge.text(response.count).fadeIn().addClass('carrinho-pulse');
+            setTimeout(() => badge.removeClass('carrinho-pulse'), 500);
+        } else {
+            badge.fadeOut();
         }
     });
 }
 
-// Modal de pesquisa mobile
-$(document).ready(function() {
-    // Abrir modal de pesquisa no mobile
-    $('#btn-search-mobile').click(function() {
-        $('#modal-search').modal('show');
-    });
-    
-    // Fechar modal ao enviar formulário
-    $('#modal-search form').submit(function() {
-        $('#modal-search').modal('hide');
-    });
-    
-    // Atualizar contador a cada 5 segundos
+$(document).ready(function(){
+
+    $('#btn-search-mobile').click(() => $('#modal-search').modal('show'));
+
     setInterval(atualizarContadorCarrinho, 5000);
-    
-    // Live search (opcional - pesquisa ao digitar)
-    let searchTimeout;
-    $('#search-input').on('keyup', function() {
-        clearTimeout(searchTimeout);
-        const searchValue = $(this).val();
-        
-        if(searchValue.length >= 2) {
-            searchTimeout = setTimeout(function() {
-                $('#form-pesquisa').submit();
-            }, 800);
-        } else if(searchValue.length === 0) {
-            searchTimeout = setTimeout(function() {
-                $('#form-pesquisa').submit();
-            }, 300);
-        }
-    });
+
 });
 </script>

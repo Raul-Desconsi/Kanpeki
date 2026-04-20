@@ -6,6 +6,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/Kanpeki/api/phpFunction/verificaLogin
 require_once($_SERVER['DOCUMENT_ROOT'] . "/Kanpeki/api/phpFunction/carrinho.php");
 
 $usuario = $_SESSION['usuario'];
+$carrinho = $_SESSION['carrinho'] ?? [];
+
 $total = totalCarrinho();
 
 if($total <= 0){
@@ -22,6 +24,29 @@ if($usuario['pontos'] < $total){
 // desconta pontos
 $stmt = $conexao->prepare("UPDATE usuario SET pontos = pontos - ? WHERE cracha = ?");
 $stmt->execute([$total, $usuario['cracha']]);
+
+// 🔥 DATA ÚNICA DO PEDIDO (AGRUPAMENTO)
+$dataCompra = date("Y-m-d H:i:s");
+
+// 🔥 SALVAR HISTÓRICO
+foreach($carrinho as $item){
+
+    $stmt = $conexao->prepare("
+        INSERT INTO compra_historico 
+        (produto_id, funcionario_cracha, quantidade, valor_total, data)
+        VALUES (?, ?, ?, ?, ?)
+    ");
+
+    $valorTotalItem = $item['preco'] * $item['qtd'];
+
+    $stmt->execute([
+        $item['id'],
+        $usuario['cracha'],
+        $item['qtd'],
+        $valorTotalItem,
+        $dataCompra
+    ]);
+}
 
 // atualiza sessão
 $_SESSION['usuario']['pontos'] -= $total;
