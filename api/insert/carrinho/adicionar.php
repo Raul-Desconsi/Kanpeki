@@ -2,9 +2,9 @@
 session_start();
 header('Content-Type: application/json');
 
-require_once($_SERVER['DOCUMENT_ROOT'] . "/Kanpeki/api/config/connect.php");
-require_once($_SERVER['DOCUMENT_ROOT'] . "/Kanpeki/api/phpFunction/verificaLogin.php");
-require_once($_SERVER['DOCUMENT_ROOT'] . "/Kanpeki/api/phpFunction/carrinho.php");
+require_once(__DIR__ . "/../../config/connect.php");
+require_once(__DIR__ . "/../../phpFunction/verificaLogin.php");
+require_once(__DIR__ . "/../../phpFunction/carrinho.php");
 
 $response = ['success' => false, 'message' => '', 'count' => 0];
 

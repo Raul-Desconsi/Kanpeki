@@ -1,45 +1,61 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 .login {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .login-left {
     width: 40%;
-    background: white;
-    padding: 60px;
+    background: #ffffff;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    padding: 40px;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 420px;
 }
 
 .login-left h2 {
     color: #F851B5;
+    margin-bottom: 10px;
+}
+
+.login-left p {
+    margin-bottom: 24px;
 }
 
 .login-right {
-    width: 60%;
-    background: linear-gradient(135deg,#F851B5,#F077C5);
+    width: 90%;
+    background: linear-gradient(135deg, #E82A67, #E82A67);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    
-    background-image: url('../../ativos/imagens/logo.png');
-    background-size: cover;       
-    background-position: center;  
-    background-repeat: no-repeat; 
-    position: relative;
+    overflow: hidden;
+    padding: 0px;
+    box-sizing: border-box;
 }
 
-.login-right p {
-    position: relative; 
-    z-index: 1;
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-align: center;
+.login-right-img {
+    max-width: 60%;
+    max-height: 100vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
 }
 
-/* INPUT */
 input {
     width: 100%;
     padding: 12px;
@@ -48,25 +64,17 @@ input {
     border-radius: 8px;
 }
 
-
-
-
 @media (max-width: 768px) {
     .login {
-        justify-content: center;
-        align-items: center;
         flex-direction: column;
     }
 
     .login-left,
     .login-right {
         width: 100%;
-        padding: 30px;
-        justify-content: center;
-        align-items: center;
     }
 
     .login-right {
-       display: none;
+        display: none;
     }
 }
