@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include __DIR__ . '/../../config/connect.php'; 
+include __DIR__ . '/../../config/connect.php';
 
 header('Content-Type: application/json; charset=utf-8');
 ini_set('display_errors', 1);
@@ -13,7 +13,11 @@ $cracha = $input['cracha'] ?? null;
 
 if (isset($conexao)) {
     try {
-        $sql = "SELECT * FROM usuario WHERE cracha = :cracha";
+        $sql = "select u.* ,  s.nome as nome_setor
+                from usuario u
+                inner join setor s on s.id  = u.setor_id 
+                where cracha = :cracha";
+
         $stmt = $conexao->prepare($sql);
         $stmt->bindParam(':cracha', $cracha, PDO::PARAM_STR);
         $stmt->execute();
@@ -22,10 +26,10 @@ if (isset($conexao)) {
 
         if ($resposta) {
             unset($resposta['senha']);
-        
+
             http_response_code(200);
             echo json_encode([
-                "usuario" => $resposta 
+                "usuario" => $resposta
             ]);
         } else {
             http_response_code(401);
